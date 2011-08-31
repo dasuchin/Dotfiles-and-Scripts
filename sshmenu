@@ -1,0 +1,25 @@
+#!/bin/bash
+$HOME/bin/addkeys
+HOSTS=$(grep ^Host $HOME/.ssh/config | awk '{print $2}' | grep -v '*' | sort -f)
+HOSTS="localhost $HOSTS"
+
+echo ''
+echo "  SELECT SSH DESTINATION"
+echo "  ------------------------"
+select host in $HOSTS
+do
+  case $host in
+    localhost)
+      exit
+    ;;
+    *)
+      echo "Connecting to $host"
+      echo $(date +%s) - $(date) - $host - connect >> $HOME/.sshmenu.log
+	    ssh $host
+      echo $(date +%s) - $(date) - $host - disconnect >> $HOME/.sshmenu.log
+	    exit
+    ;;
+  esac
+done
+
+
