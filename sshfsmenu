@@ -1,0 +1,24 @@
+#!/bin/bash
+#$HOME/bin/addkeys
+HOSTS=$(grep ^Host $HOME/.ssh/config | awk '{print $2}' | grep -v '*' | sort -f)
+HOSTS="localhost $HOSTS"
+
+echo ''
+echo "  SELECT HOST TO MOUNT"
+echo "  ------------------------"
+select host in $HOSTS
+do
+  case $host in
+    localhost)
+      exit
+    ;;
+    *)
+      echo "Mounting $host"
+      mkdir /Volumes/$host
+      sshfs -p 22 $host:/var/www/html/WebSites/ /Volumes/$host -oauto_cache,reconnect,defer_permissions,noappledouble,negative_vncache
+	    exit
+    ;;
+  esac
+done
+
+
