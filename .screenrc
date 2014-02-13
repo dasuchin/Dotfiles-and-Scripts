@@ -1,0 +1,16 @@
+#hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m%{W}%c %{g}]'
+
+# Look and feel
+#caption always "%{= 11}%{+b w}Screen: %n | %h %=%t %c"
+#caption always "%{yK}   -=%H=- | $LOGNAME | %{yK}%c |  %{yK}%-Lw%{yK}%50>%{Ky}%n%f* %t%{-}%+Lw%<%{- Wk}"
+#caption string "%{rk} %c %{dd} %{+b M}%n  %{-b dd}%-w%{+b B.}%n* %t%{-}%+w%<"
+caption always "%{= 11}%{+b w}Screen: %n "
+hardstatus alwayslastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+
+# Our warning of activity
+activity "Activity in %t(%n)"
+
+defscrollback 5000
+startup_message off
+vbell off
