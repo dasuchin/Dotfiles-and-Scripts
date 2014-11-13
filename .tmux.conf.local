@@ -1,0 +1,2 @@
+set-window-option -g window-status-current-fg cyan
+bind-key C-a send-prefix
